@@ -46,8 +46,7 @@ func _fixed_process(delta):
 	if movement + external_movement != Vector3():
 		movement = movement.normalized() * movement_speed
 		
-		if external_movement.length() > max_speed:
-			external_movement = external_movement.normalized() * max_speed
+		#if external_movement.length() > max_speed: external_movement = external_movement.normalized() * max_speed
 		
 		var remaining = move((movement + external_movement) * delta)
 		if is_colliding():

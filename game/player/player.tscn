@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://tmp/dae/disc.scn" type="PackedScene" id=2]
 [ext_resource path="res://physics/gravity_kinematic_parent.gd" type="Script" id=3]
+[ext_resource path="res://physics/jump_kinematic_parent.gd" type="Script" id=4]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -32,6 +33,14 @@ max_speed = 100.0
 
 [node name="disc" parent="." instance=ExtResource( 2 )]
 
+[node name="CollisionShape" type="CollisionShape" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99705, 0 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
 [node name="gravity" type="Node" parent="."]
 
 script/script = ExtResource( 3 )
@@ -41,12 +50,20 @@ override_gravity_vector = false
 gravity_speed = null
 gravity_vector = null
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="jump" type="Node" parent="."]
+
+script/script = ExtResource( 4 )
+min_height = 5.0
+max_height = 50.0
+jump_action_name = "jump"
+time_to_max = 1.5
+
+[node name="ground_check" type="RayCast" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99705, 0 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
+enabled = true
+cast_to = Vector3( 0, -1, 0 )
+layer_mask = 1
+type_mask = 3
 
 
