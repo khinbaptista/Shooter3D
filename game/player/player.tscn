@@ -1,14 +1,22 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://tmp/dae/disc.scn" type="PackedScene" id=2]
+[ext_resource path="res://physics/gravity_kinematic_parent.gd" type="Script" id=3]
+
+[sub_resource type="SphereShape" id=1]
+
+radius = 1.0
 
 [node name="player" type="KinematicBody"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = true
 input/capture_on_drag = false
-shape_count = 0
+shape_count = 1
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99705, 0 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collide_with/static = true
@@ -20,7 +28,24 @@ script/script = ExtResource( 1 )
 movement_speed = null
 angular_speed = null
 mouse_div = null
+max_speed = 100.0
 
 [node name="disc" parent="." instance=ExtResource( 2 )]
+
+[node name="gravity" type="Node" parent="."]
+
+script/script = ExtResource( 3 )
+override_gravity_speed = false
+override_gravity_vector = false
+gravity_speed = null
+gravity_vector = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99705, 0 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 

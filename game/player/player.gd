@@ -7,6 +7,10 @@ export(float, 0, 100, 0.1) var movement_speed
 export(float, 0, 1080, 1.0) var angular_speed
 export(float, 0.05, 300, 0.05) var mouse_div
 
+export(float, 0.01, 1000, 0.01) var max_speed
+
+var external_movement = Vector3() setget add_movement
+
 func _ready():
 	FORWARD = Vector3(0, 0, -1)
 	
@@ -39,7 +43,19 @@ func _fixed_process(delta):
 	if Input.is_action_pressed("move_left"):
 		movement -= RIGHT
 
-	if movement != Vector3():
+	if movement + external_movement != Vector3():
 		movement = movement.normalized() * movement_speed
-		move(movement)
+		
+		if external_movement.length() > max_speed:
+			external_movement = external_movement.normalized() * max_speed
+		
+		var remaining = move((movement + external_movement) * delta)
+		if is_colliding():
+			var normal = get_collision_normal()
+			move(normal.slide(remaining))
+	
+	external_movement = Vector3()
 
+func add_movement(movement):
+	pass
+	external_movement += movement
