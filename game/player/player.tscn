@@ -35,6 +35,7 @@ max_speed = 100.0
 [node name="gravity" type="Node" parent="."]
 
 script/script = ExtResource( 3 )
+weight = 10.0
 override_gravity_speed = false
 override_gravity_vector = false
 gravity_speed = null

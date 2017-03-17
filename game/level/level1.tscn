@@ -19,10 +19,6 @@ angular_speed = 90.0
 mouse_div = 250.0
 max_speed = 20.0
 
-[node name="CollisionShape" parent="player"]
-
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99705, 0 )
-
 [node name="Camera" type="Camera" parent="player"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -109,10 +105,8 @@ shadow/blur_passes = 2.0
 projector = null
 operator = 0
 shadow/mode = 3
-shadow/max_distance = 100.0
+shadow/max_distance = 150.0
 shadow/split_weight = 0.5
 shadow/zoffset_scale = 512.0
 
 
-[editable path="floor"]
-[editable path="player"]
