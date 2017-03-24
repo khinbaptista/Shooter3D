@@ -13,11 +13,7 @@ transform/local = Transform( 50, 0, 0, 0, 0.5, 0, 0, 0, 50, 0, -0.511659, 0.0143
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0408, 0 )
-movement_speed = 30.0
-angular_speed = 90.0
-mouse_div = 250.0
-max_speed = 20.0
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.34795, 0 )
 
 [node name="Camera" type="Camera" parent="player"]
 
@@ -101,10 +97,10 @@ shadow/darkening = 0.8
 shadow/z_offset = 0.0
 shadow/z_slope_scale = 5.0
 shadow/esm_multiplier = 224.2
-shadow/blur_passes = 2.0
+shadow/blur_passes = 3.0
 projector = null
 operator = 0
-shadow/mode = 3
+shadow/mode = 2
 shadow/max_distance = 150.0
 shadow/split_weight = 0.5
 shadow/zoffset_scale = 512.0
