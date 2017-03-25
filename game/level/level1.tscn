@@ -38,7 +38,7 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.319895, 0 )
 [node name="SpotLight" type="SpotLight" parent="lights"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 11.507, 4.56388, 0 )
+transform/local = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 11.507, 10.1793, 0 )
 layers = 1
 params/enabled = true
 params/editor_only = false
@@ -62,7 +62,7 @@ params/spot_attenuation = 1.0
 [node name="OmniLight" type="OmniLight" parent="lights"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05174, -12.0247 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.17333, -12.0247 )
 layers = 1
 params/enabled = true
 params/editor_only = false
@@ -78,7 +78,7 @@ shadow/esm_multiplier = 60.0
 shadow/blur_passes = 1.0
 projector = null
 operator = 0
-params/radius = 9.12417
+params/radius = 17.5596
 params/attenuation = 2.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="lights"]

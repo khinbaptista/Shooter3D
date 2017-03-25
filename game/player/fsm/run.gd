@@ -18,19 +18,28 @@ func on_exit():
 	.on_exit()
 
 func _fixed_process(delta):
-	var movement = Vector3()
-	
-	if Input.is_action_pressed("move_forward"):
-		movement.z -= 1.0
-	if Input.is_action_pressed("move_backward"):
-		movement.z += 1.0
-	if Input.is_action_pressed("move_left"):
-		movement.x -= 1.0
-	if Input.is_action_pressed("move_right"):
-		movement.x += 1.0
+	var movement = movement_input()
 	
 	if movement == Vector3():
 		fsm.make_transition("idle")
 		return
 	
 	physics.velocity_frame += movement.normalized() * properties.get_movement_speed()
+
+func movement_input():
+	var forward	= physics.get_forward_vector()
+	var right	= physics.get_right_vector()
+	var movement	= Vector3()
+	
+	if Input.is_action_pressed("move_forward"):
+		movement.z += 1.0
+	if Input.is_action_pressed("move_backward"):
+		movement.z -= 1.0
+	if Input.is_action_pressed("move_left"):
+		movement.x -= 1.0
+	if Input.is_action_pressed("move_right"):
+		movement.x += 1.0
+	
+	movement = forward * movement.z + right * movement.x
+	
+	return movement

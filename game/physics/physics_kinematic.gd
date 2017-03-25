@@ -74,3 +74,18 @@ func apply_movement(delta):
 			print("applied velocity = ", applied + applied2)
 		else:
 			print("applied velocity = ", applied)
+
+func rotate_look(deg):
+	player.rotate_y(deg2rad(deg))
+
+func get_rotation_matrix():
+	return player.get_global_transform().basis
+
+func get_forward_vector():
+	return get_rotation_matrix() * Vector3(0, 0, -1)
+
+func get_up_vector():
+	return get_rotation_matrix() * Vector3(0, 1, 0)
+
+func get_right_vector():
+	return get_forward_vector().cross(get_up_vector())
