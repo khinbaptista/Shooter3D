@@ -3,10 +3,17 @@ extends "res://logic/FSM/FSMState.gd"
 export(StringArray) var move_actions
 
 func on_enter():
-	set_process_input(true)
+	set_fixed_process(true)
 	.on_enter()
 
-func _input(e):
+func _fixed_process(delta):
 	for action in move_actions:
-		if e.is_action_pressed(action):
+		if Input.is_action_pressed(action):
 			fsm.make_transition("move")
+			return
+	
+	if Input.is_action_pressed("jump"):
+		fsm.make_transition("jump")
+
+func on_falling():
+	fsm.make_transition("fall")

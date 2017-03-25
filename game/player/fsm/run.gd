@@ -1,12 +1,12 @@
 extends "res://logic/FSM/FSMState.gd"
 
-export(NodePath) var kinematic_body
+export(NodePath) var physics_path
 export(NodePath) var properties_path
-var kinematic
+var physics
 var properties
 
 func _ready():
-	kinematic = get_node(kinematic_body)
+	physics = get_node(physics_path)
 	properties = get_node(properties_path)
 
 func on_enter():
@@ -33,4 +33,10 @@ func _fixed_process(delta):
 		fsm.make_transition("idle")
 		return
 	
-	kinematic.move(movement * properties.get_movement_speed() * delta)
+	physics.velocity_frame += movement.normalized() * properties.get_movement_speed()
+	
+	if Input.is_action_pressed("jump"):
+		fsm.make_transition("jump")
+
+func on_falling():
+	fsm.make_transition("fall")

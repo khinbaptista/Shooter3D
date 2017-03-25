@@ -13,7 +13,7 @@ transform/local = Transform( 50, 0, 0, 0, 0.5, 0, 0, 0, 50, 0, -0.511659, 0.0143
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.34795, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
 
 [node name="Camera" type="Camera" parent="player"]
 

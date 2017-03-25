@@ -57,6 +57,7 @@ func make_transition(key):
 	if next_state == null or next_state == current_state: return false
 	
 	set_current_state(next_state)
+	prints("FSM key:", key)
 	return true
 	
 ##################################################
