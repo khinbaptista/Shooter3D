@@ -6,6 +6,11 @@ export(NodePath) var physics_path
 onready var properties	= get_node(properties_path)
 onready var physics	= get_node(physics_path)
 
+############################################################
+# "GDC: Building a better jump"
+#	https://www.youtube.com/watch?v=hG9SzQxaCm8
+############################################################
+
 var height	# h
 var velocity	# vx
 var distance	# xh
@@ -37,5 +42,4 @@ func on_enter():
 	timer.start()
 
 func on_peak():
-	print(physics.get_global_transform().origin.y)
 	fsm.make_transition("fall")

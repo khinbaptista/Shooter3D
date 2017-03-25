@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://primitives/sphere.msh" type="Mesh" id=1]
 [ext_resource path="res://player/player_properties.gd" type="Script" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://player/fsm/fsm-movement.gd" type="Script" id=4]
 [ext_resource path="res://player/fsm/idle.gd" type="Script" id=5]
 [ext_resource path="res://player/fsm/run.gd" type="Script" id=6]
-[ext_resource path="res://player/fsm/jump.gd" type="Script" id=7]
-[ext_resource path="res://player/fsm/fall.gd" type="Script" id=8]
+[ext_resource path="res://player/fsm/fsm-jump.gd" type="Script" id=7]
+[ext_resource path="res://player/fsm/grounded.gd" type="Script" id=8]
+[ext_resource path="res://player/fsm/jump.gd" type="Script" id=9]
+[ext_resource path="res://player/fsm/fall.gd" type="Script" id=10]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -137,21 +139,27 @@ script/script = ExtResource( 6 )
 physics_path = NodePath("../../physics")
 properties_path = NodePath("../../properties")
 
-[node name="jump" type="Node" parent="fsm-movement"]
+[node name="fsm-jump" type="Node" parent="."]
 
 script/script = ExtResource( 7 )
+
+[node name="grounded" type="Node" parent="fsm-jump"]
+
+script/script = ExtResource( 8 )
+
+[node name="jump" type="Node" parent="fsm-jump"]
+
+script/script = ExtResource( 9 )
 properties_path = NodePath("../../properties")
 physics_path = NodePath("../../physics")
 
-[node name="fall" type="Node" parent="fsm-movement"]
+[node name="fall" type="Node" parent="fsm-jump"]
 
-script/script = ExtResource( 8 )
+script/script = ExtResource( 10 )
 physics_path = NodePath("../../physics")
 
-[connection signal="landed" from="physics" to="fsm-movement/fall" method="on_landed"]
+[connection signal="landed" from="physics" to="fsm-jump/fall" method="on_landed"]
 
-[connection signal="not_grounded" from="physics" to="fsm-movement/idle" method="on_falling"]
-
-[connection signal="not_grounded" from="physics" to="fsm-movement/move" method="on_falling"]
+[connection signal="not_grounded" from="physics" to="fsm-jump/grounded" method="on_falling"]
 
 

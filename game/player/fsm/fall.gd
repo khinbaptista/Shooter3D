@@ -10,4 +10,4 @@ func on_enter():
 	.on_enter()
 
 func on_landed():
-	fsm.make_transition("idle")
+	fsm.make_transition("land")

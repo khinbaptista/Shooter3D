@@ -34,9 +34,3 @@ func _fixed_process(delta):
 		return
 	
 	physics.velocity_frame += movement.normalized() * properties.get_movement_speed()
-	
-	if Input.is_action_pressed("jump"):
-		fsm.make_transition("jump")
-
-func on_falling():
-	fsm.make_transition("fall")

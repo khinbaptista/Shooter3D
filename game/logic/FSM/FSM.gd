@@ -54,10 +54,11 @@ func set_current_state_name(state_name):
 
 func make_transition(key):
 	var next_state = current_state.transition_destination(key)
-	if next_state == null or next_state == current_state: return false
+	if next_state == null or next_state == current_state:
+		return false
 	
 	set_current_state(next_state)
-	prints("FSM key:", key)
+	#prints("FSM>", get_name(), ":", key)
 	return true
 	
 ##################################################

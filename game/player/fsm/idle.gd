@@ -11,9 +11,3 @@ func _fixed_process(delta):
 		if Input.is_action_pressed(action):
 			fsm.make_transition("move")
 			return
-	
-	if Input.is_action_pressed("jump"):
-		fsm.make_transition("jump")
-
-func on_falling():
-	fsm.make_transition("fall")

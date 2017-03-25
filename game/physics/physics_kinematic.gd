@@ -29,7 +29,7 @@ func _fixed_process(delta):
 	update_grounded()
 	apply_movement(delta)
 	
-	if grounded: velocity_frame = Vector3()
+	velocity_frame = Vector3()
 
 func grounded():
 	return grounded
@@ -45,11 +45,9 @@ func update_grounded():
 	if not was_grounded and grounded:
 		acceleration -= gravity_vector
 		velocity.y = 0.0
-		print("landed")
 		emit_signal("landed")
 	elif was_grounded and not grounded:
 		acceleration += gravity_vector
-		print("not grounded")
 		emit_signal("not_grounded")
 
 func apply_movement(delta):
