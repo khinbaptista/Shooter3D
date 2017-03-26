@@ -5,15 +5,19 @@ export(NodePath) var properties_path
 var physics
 var properties
 
+var last_movement = Vector3()
+
 func _ready():
 	physics = get_node(physics_path)
 	properties = get_node(properties_path)
 
 func on_enter():
+	last_movement = Vector3()
 	set_fixed_process(true)
 	.on_enter()
 
 func on_exit():
+	physics.velocity_walk -= last_movement
 	set_fixed_process(false)
 	.on_exit()
 
@@ -24,7 +28,10 @@ func _fixed_process(delta):
 		fsm.make_transition("idle")
 		return
 	
-	physics.velocity_frame += movement.normalized() * properties.get_movement_speed()
+	movement = movement.normalized() * properties.get_movement_speed()
+	physics.velocity_walk += movement - last_movement
+	
+	last_movement = movement
 
 func movement_input():
 	var forward	= physics.get_forward_vector()
@@ -40,6 +47,7 @@ func movement_input():
 	if Input.is_action_pressed("move_right"):
 		movement.x += 1.0
 	
-	movement = forward * movement.z + right * movement.x
+	forward.y = 0; right.y = 0
+	movement = forward.normalized() * movement.z + right.normalized() * movement.x
 	
 	return movement

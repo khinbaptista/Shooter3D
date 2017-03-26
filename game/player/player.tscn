@@ -143,7 +143,6 @@ properties_path = NodePath("../../properties")
 
 [node name="fsm-jump" type="Node" parent="."]
 
-editor/display_folded = true
 script/script = ExtResource( 7 )
 
 [node name="grounded" type="Node" parent="fsm-jump"]

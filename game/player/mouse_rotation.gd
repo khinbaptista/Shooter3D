@@ -14,6 +14,8 @@ func _input(event):
 	if event.type == InputEvent.MOUSE_MOTION:
 		var angle = (event.speed_x / mouse_div) * deg2rad(angular_speed)
 		physics.rotate_look(angle * get_process_delta_time())
+		angle = (event.speed_y / mouse_div) * deg2rad(angular_speed)
+		physics.rotate_look_updown(angle * get_process_delta_time())
 		
 	if event.is_action_pressed("ui_up"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
