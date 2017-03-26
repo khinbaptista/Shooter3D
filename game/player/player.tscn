@@ -165,7 +165,7 @@ physics_path = NodePath("../../physics")
 
 script/script = ExtResource( 11 )
 angular_speed = 90.0
-mouse_div = 50.0
+mouse_div = 25.0
 physics_path = NodePath("../physics")
 
 [connection signal="landed" from="physics" to="fsm-jump/fall" method="on_landed"]

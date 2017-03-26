@@ -89,3 +89,6 @@ func get_up_vector():
 
 func get_right_vector():
 	return get_forward_vector().cross(get_up_vector())
+
+func set_velocity_frame(vector):
+	velocity_frame = vector

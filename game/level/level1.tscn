@@ -7,9 +7,21 @@
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
-[node name="floor" parent="." instance=ExtResource( 1 )]
+[node name="platforms" type="Spatial" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="floor" parent="platforms" instance=ExtResource( 1 )]
 
 transform/local = Transform( 50, 0, 0, 0, 0.5, 0, 0, 0, 50, 0, -0.511659, 0.0143437 )
+
+[node name="floor-1" parent="platforms" instance=ExtResource( 1 )]
+
+transform/local = Transform( 6.17939, 0, 0, 0, 0.0617939, 0, 0, 0, 6.17939, 0, 5.79905, 0.0143437 )
+
+[node name="floor-2" parent="platforms" instance=ExtResource( 1 )]
+
+transform/local = Transform( 3.0256, 0, 0, 0, 0.030256, 0, 0, 0, 3.0256, 0.0408478, 10.2463, -11.4305 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 
@@ -38,11 +50,11 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.319895, 0 )
 [node name="SpotLight" type="SpotLight" parent="lights"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 11.507, 10.1793, 0 )
+transform/local = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 11.507, 5.66467, 0 )
 layers = 1
 params/enabled = true
 params/editor_only = false
-params/bake_mode = 0
+params/bake_mode = 2
 params/energy = 1.0
 colors/diffuse = Color( 1, 1, 1, 1 )
 colors/specular = Color( 0.9375, 0.871696, 0.571289, 1 )
@@ -55,7 +67,7 @@ shadow/blur_passes = 1.0
 projector = null
 operator = 0
 params/radius = 13.1641
-params/attenuation = 1.0
+params/attenuation = 2.0
 params/spot_angle = 66.6305
 params/spot_attenuation = 1.0
 
@@ -101,8 +113,8 @@ shadow/blur_passes = 3.0
 projector = null
 operator = 0
 shadow/mode = 2
-shadow/max_distance = 150.0
-shadow/split_weight = 0.5
+shadow/max_distance = 500.0
+shadow/split_weight = 0.01
 shadow/zoffset_scale = 512.0
 
 
