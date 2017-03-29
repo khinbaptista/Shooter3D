@@ -114,6 +114,7 @@ jump_max_ms = 1000.0
 
 editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+visibility/visible = false
 script/script = ExtResource( 3 )
 gravity_vector = Vector3( 0, -1, 0 )
 max_speed = 30.0

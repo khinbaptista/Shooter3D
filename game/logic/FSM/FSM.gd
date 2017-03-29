@@ -15,7 +15,8 @@ func _ready():
 	var children = get_children()
 	for child in children:
 		# If the child node extends FSMState, add it to states
-		if child extends FSMState: add_state(child)
+		if child extends FSMState:
+			add_state(child)
 
 ##################################################
 

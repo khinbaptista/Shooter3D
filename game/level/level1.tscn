@@ -55,7 +55,12 @@ transform/local = Transform( 50, 0, 0, 0, 0.5, 0, 0, 0, 50, 0, -0.511659, 0.0143
 
 [node name="floor-1" parent="platforms" instance=ExtResource( 1 )]
 
+editor/display_folded = true
 transform/local = Transform( 6.17939, 0, 0, 0, 0.0617939, 0, 0, 0, 6.17939, 0, 5.79905, 0.0143437 )
+
+[node name="StaticBody" parent="platforms/floor-1"]
+
+editor/display_folded = true
 
 [node name="Cube" parent="platforms/floor-1/StaticBody"]
 
