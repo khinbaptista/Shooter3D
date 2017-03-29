@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://primitives/sphere.msh" type="Mesh" id=1]
 [ext_resource path="res://player/player_properties.gd" type="Script" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://player/fsm/grounded.gd" type="Script" id=8]
 [ext_resource path="res://player/fsm/jump.gd" type="Script" id=9]
 [ext_resource path="res://player/fsm/fall.gd" type="Script" id=10]
-[ext_resource path="res://player/mouse_rotation.gd" type="Script" id=11]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -72,6 +71,7 @@ collision/margin = 0.001
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
+editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
@@ -129,6 +129,7 @@ type_mask = 15
 
 [node name="fsm-movement" type="Node" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 4 )
 
 [node name="idle" type="Node" parent="fsm-movement"]
@@ -144,6 +145,7 @@ properties_path = NodePath("../../properties")
 
 [node name="fsm-jump" type="Node" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 7 )
 
 [node name="grounded" type="Node" parent="fsm-jump"]
@@ -160,13 +162,6 @@ physics_path = NodePath("../../physics")
 
 script/script = ExtResource( 10 )
 physics_path = NodePath("../../physics")
-
-[node name="mouse_rotation" type="Node" parent="."]
-
-script/script = ExtResource( 11 )
-angular_speed = 90.0
-mouse_div = 25.0
-physics_path = NodePath("../physics")
 
 [connection signal="landed" from="physics" to="fsm-jump/fall" method="on_landed"]
 
