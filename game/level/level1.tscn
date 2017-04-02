@@ -56,7 +56,6 @@ transform/local = Transform( 50, 0, 0, 0, 0.5, 0, 0, 0, 50, 0, -0.511659, 0.0143
 
 [node name="floor-1" parent="platforms" instance=ExtResource( 1 )]
 
-editor/display_folded = true
 transform/local = Transform( 6.17939, 0, 0, 0, 0.0617939, 0, 0, 0, 6.17939, 0, 5.79905, 0.0143437 )
 
 [node name="StaticBody" parent="platforms/floor-1"]
@@ -65,6 +64,7 @@ editor/display_folded = true
 
 [node name="Cube" parent="platforms/floor-1/StaticBody"]
 
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 material/0 = SubResource( 1 )
 
 [node name="floor-2" parent="platforms" instance=ExtResource( 1 )]
@@ -74,6 +74,7 @@ transform/local = Transform( 3.0256, 0, 0, 0, 0.030256, 0, 0, 0, 3.0256, 0.04084
 [node name="player" parent="." instance=ExtResource( 2 )]
 
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+camera_path = NodePath("Camera")
 
 [node name="Camera" type="Camera" parent="player"]
 
@@ -92,9 +93,10 @@ v_offset = 0.0
 script/script = ExtResource( 3 )
 capture_mouse = true
 player_is_parent = true
-player_path = null
+player_path = NodePath("")
 angular_speed = 10.0
-mouse_speed_factor = 500.0
+mouse_speed_factor = 1000.0
+block_angle = 10.0
 
 [node name="lights" type="Spatial" parent="."]
 

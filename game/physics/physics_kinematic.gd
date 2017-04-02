@@ -75,7 +75,7 @@ func apply_movement(delta):
 		else:
 			print("applied velocity = ", applied)
 
-func rotate_look(deg):
+func rotate_look_leftright(deg):
 	player.rotate_y(deg2rad(deg))
 	player.look_at(player.get_global_transform().origin + get_forward_vector(), Vector3(0, 1, 0))
 
@@ -87,7 +87,8 @@ func get_rotation_matrix():
 	return player.get_global_transform().basis
 
 func get_forward_vector():
-	return get_rotation_matrix() * Vector3(0, 0, -1)
+	#return get_rotation_matrix() * Vector3(0, 0, -1)
+	return player.get_forward()
 
 func get_up_vector():
 	return get_rotation_matrix() * Vector3(0, 1, 0)
