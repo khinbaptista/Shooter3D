@@ -29,6 +29,7 @@ func _fixed_process(delta):
 	update_grounded()
 	apply_movement(delta)
 	
+	player.look_at(player.get_global_transform().origin + player.get_forward(), Vector3(0, 1, 0))
 #	velocity_walk = Vector3()
 
 func grounded():

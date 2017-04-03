@@ -33,6 +33,14 @@ func _ready():
 	#forward.y = 0
 	
 	set_process_input(true)
+	
+	if not player_is_parent:
+		set_fixed_process(true)
+
+func _fixed_process(delta):
+	var transform = get_global_transform()
+	transform.origin = player.get_global_transform().origin + offset
+	call_deferred("set_global_transform", transform)
 
 func _input(event):
 	if event.type != InputEvent.MOUSE_MOTION: return
